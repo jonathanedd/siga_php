@@ -1,0 +1,44 @@
+<?php
+include './dbConnect.php';
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $firstName = $_POST["firstName"];
+    $lastName = $_POST["lastName"];
+    $phoneNumber = $_POST["phoneNumber"];
+    // $email = $_POST["email"];
+    // $address = $_POST["address"];
+    $birthDate = $_POST["birthDate"];
+    // $idRol = $_POST["idrol"];
+    $id=$_POST["id"];
+    
+    
+    
+    $sql = "UPDATE usuario 
+            SET nombres = :firstName, 
+            apellidos = :lastName, 
+            fechaNacimiento = :birthDate
+            WHERE idusuario = :id;
+
+            UPDATE telefono
+            SET telefono = :phoneNumber
+            WHERE fktelefonousuario = :id;
+            ";
+
+    $query = $connect->prepare($sql);    
+    $query->bindParam(':firstName',$firstName,);
+    $query->bindParam(':lastName',$lastName);
+    $query->bindParam(':phoneNumber',$phoneNumber);
+    // $query->bindParam(':email',$email);
+    // $query->bindParam(':address',$address);
+    $query->bindParam(':birthDate',$birthDate);
+    // $query->bindParam(':idrol',$idRol);
+    $query->bindParam(':id',$id);
+    
+    
+    if($query->execute()){
+        echo "<script>alert('El registro se ha actualizado correctamente'); window.location='./GESTION_ADMINISTRATIVA/vista_usuarios.php';</script>";        
+    }else{
+        echo "<script>alert('Error actualizando registro'); window.location='./GESTION_ADMINISTRATIVA/vista_usuarios.php';</script>";
+    }    
+    $connect=null;   
+}
+?>
