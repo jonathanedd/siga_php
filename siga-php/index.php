@@ -2,11 +2,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
-        <link href="resources/css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/index.css" rel="stylesheet" type="text/css"/>
         <script src="resources/js/validations.js" type="text/javascript"></script>
      </head>
-    <body>
-        <div class="container">
+    <body class="body-login">
+        <img src="./resources/images/iconblack.png" alt="">
+        <h1>S.I.G.A <br>Sistema de Información para la Gestión Académica</h1>
+        <div class="form-container">
+            
             <form action="validation.php" method="POST">
                 <table border="1">                   
                     <tbody>

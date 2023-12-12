@@ -66,7 +66,14 @@ if($query->rowCount() > 0){
         . '<td><form action="../updateusuario.php" method="POST">  
             <input type="hidden" name="id" id=id value="' . $result->idusuario . '">
             <button type="submit">Actualizar</button>
-        </form></td>
+            
+        </form>
+        <form action="../deleteusuario.php" method="POST">  
+        <input type="hidden" name="id" id=id value="' . $result->idusuario . '">
+        <button type="submit">Eliminar</button>
+    </form>
+
+        </td>
         </tr>';
         
     }echo '</tbody></table>';
@@ -93,8 +100,10 @@ if($query->rowCount() > 0){
                     buttons: [
                         'copy', 'csv', 'excel', 'pdf', 'print'
                     ],
-                    "scrollX": true,
-                    "paging": false ,
+                    responsive: true, 
+                    "paging": true, 
+                    "pageLength": 5,  
+                    "lengthMenu": [10, 25, 50, 75, 100],
                     "search": {
                         "smart": true
                     },
